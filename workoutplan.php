@@ -170,12 +170,15 @@
             bottom:10px;
             right:10px;
         }
+        .nextexecrsie:disabled{
+            background-color:  rgb(255, 152, 152);
+        }
     </style>
     <title>Fitness Tracker</title>
 </head>
 <body>
     <img class="backgroundimage" src="gym.jpg">
-    <div id="container" class="container hidden">
+    <div id="container" class="container">
         <div class="progress-bar-container">
             <div class="progress-bar" id="progress-bar"></div>
         </div>
@@ -255,8 +258,8 @@
             </div>
         </form>
     </div>
-    <!-- <div id="tracker" class="hidden"> -->
-    <div id="tracker">
+    <div id="tracker" class="hidden">
+    <!-- <div id="tracker"> -->
         <h2 class="text" style="color:red">Your Fitness Tracker</h2>
         <div class="plans">
         <div class="workout-plan" id="dailyWorkoutPlan"></div>
@@ -272,11 +275,11 @@
             </video> -->
         </div>
         <div id="message"></div>
-        <button id="nextexecrsie" class="nextexecrsie hidden" onclick="completeExercise()">Next</button>
+        <button id="nextexecrsie" class="nextexecrsie hidden">Next</button>
         </div>
     </div>
 
-    <audio id="timerSound" src="beep-07.wav" preload="auto"></audio>
+    <audio id="timerSound" src="warning.mp3" preload="auto"></audio>
 
     <script>
         let selectedAvailability = '';
@@ -321,7 +324,7 @@
             const exercises = workoutPlans[day];
             let workoutHTML = `<h2>${day}'s Workout</h2><ul>`;
             exercises.forEach((item, index) => {
-                workoutHTML += `<li id="exercise-${index}">${item.exercise}: ${item.duration > 60 ? item.duration / 60 + ' minutes' : item.duration + ' seconds'}</li>`;
+                workoutHTML += `<li style="margin:20px;" id="exercise-${index}">${item.exercise}: ${item.duration > 60 ? item.duration / 60 + ' minutes' : item.duration + ' seconds'}</li>`;
             });
             workoutHTML += `</ul>`;
             document.getElementById('dailyWorkoutPlan').innerHTML = workoutHTML;
@@ -410,6 +413,7 @@
         const timerSound = document.getElementById('timerSound');
         const currentExerciseDisplay = document.getElementById('currentExercise');
         const nextExerciseDisplay = document.getElementById('nextExercise');
+        const btn = document.getElementById('nextexecrsie');
         // const exerciseVideo = document.getElementById('exerciseVideo');
         let countdown;
 
@@ -432,14 +436,17 @@
             
 
             function startNextExercise() {
+                document.getElementById('nextexecrsie').disabled = true;
                 if (currentExerciseIndex >= exercises.length) {
-                    document.getElementById('timerDisplay').classList.add('hidden');
-                    document.getElementById('currentExercise').classList.add('hidden');
-                    document.getElementById('nextExercise').classList.add('hidden');
-                    document.querySelector('.video-tutorial').classList.add('hidden');
-                    document.querySelector('.workout-plan').classList.remove('hidden');
-                    alert("Workout complete!");
-                    return;
+                    setTimeout(() => {
+                        document.getElementById('timerDisplay').classList.add('hidden');
+                        document.getElementById('currentExercise').classList.add('hidden');
+                        document.getElementById('nextExercise').classList.add('hidden');
+                        document.querySelector('.video-tutorial').classList.add('hidden');
+                        document.querySelector('.workout-plan').classList.remove('hidden');
+                        document.getElementById('nextexecrsie').classList.add('hidden');
+                        return;
+                    }, 1000);
                 }
 
                 const currentExercise = exercises[currentExerciseIndex];
@@ -472,8 +479,12 @@
 
                 if (time <= 0) {
                     clearInterval(countdown);
+                    document.getElementById('nextexecrsie').disabled = false;
                     timerSound.play();
-                    alert(`Time's up for ${exercise}!`);
+                    btn.onclick = ()=>{
+                        clearInterval(countdown);
+                        callback();
+                    }
                     setTimeout(() => {
                         callback();
                     }, 10000);
