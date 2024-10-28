@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: #f9f4ef; /* Soft beige background */
+    background-color: #f9f4ef;
     color: #fff;
 }
 
@@ -46,10 +46,10 @@ body {
 }
 
 .card {
-  background-color: #111;
+  background-color: #222;
   padding: 20px;
   border-radius: 5px;
-  border: 1px solid #333;
+  border: 1px solid #444;
 }
 
 .card h2 {
@@ -132,10 +132,9 @@ button:hover {
           <p class="name">You</p>
           <p class="steps">41,406</p>
           <h3 style="margin-top:10px">Caliores burnt</h3>
-          <p class="steps">1000</p>
+          <p class="steps" id="cals">1000</p>
         </div>
-        <button class="connect-fb">Connect Facebook</button>
-        <button class="send-email">Send Email</button>
+        <button class="connect-fb" onclick="startworkout()">Start Workout</button>
       </div>
       <div class="card recent-exercise">
         <h2>Recent Exercise</h2>
@@ -177,4 +176,18 @@ button:hover {
     </div>
   </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cals = localStorage.getItem('cals');
+        
+        if (cals) {
+            document.getElementById('cals').innerText = cals;
+        }
+
+    });
+    function startworkout(){
+        window.location.href = 'workoutplan.php';
+    }
+</script>
 </html>
+

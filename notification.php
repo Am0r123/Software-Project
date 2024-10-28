@@ -123,21 +123,21 @@
                     id: 1,
                     title: 'New day Workouts',
                     message: 'Todays Workouts',
-                    link: 'workoutplan.php',
+                    link: ' tracker.php',
                     timestamp: new Date().toLocaleString()
                 },
                 {
                     id: 2,
-                    title: 'New Like',
+                    title: 'Your Works',
                     message: 'Someone liked your photo.',
-                    link: 'workoutplan.php',
+                    link: ' tracker.php',
                     timestamp: new Date().toLocaleString()
                 },
                 {
                     id: 3,
-                    title: 'Friend Request',
+                    title: 'New ',
                     message: 'You have a new friend request.',
-                    link: 'workoutplan.php',
+                    link: ' tracker.php',
                     timestamp: new Date().toLocaleString()
                 }
             ];
