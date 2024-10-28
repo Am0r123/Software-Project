@@ -128,15 +128,15 @@
                 },
                 {
                     id: 2,
-                    title: 'Your Works',
-                    message: 'Someone liked your photo.',
+                    title: 'Your steps today',
+                    message: 'new step record today',
                     link: ' tracker.php',
                     timestamp: new Date().toLocaleString()
                 },
                 {
                     id: 3,
-                    title: 'New ',
-                    message: 'You have a new friend request.',
+                    title: 'New Notification',
+                    message: 'You have a new Notification',
                     link: ' tracker.php',
                     timestamp: new Date().toLocaleString()
                 }
