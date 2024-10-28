@@ -100,7 +100,8 @@
         }
     </style>
 </head>
-<body>
+<?php include_once 'navigationbar.php'?>
+<body style="margin-top:20px;"> 
     <div class="container">
         <aside class="sidebar">
             <h2>Notifications</h2>

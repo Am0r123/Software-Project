@@ -37,6 +37,7 @@
     <script>
         let selectedAvailability = '';
         let selectedGoal = '';
+        let cals='';
         const workoutPlans = {
             Monday: [
                 { exercise: "Squats", duration: 1, caloriesPerMinute: 8 },
@@ -103,7 +104,7 @@
                 const durationInMinutes = exercise.duration / 60;
                 totalCalories += durationInMinutes * exercise.caloriesPerMinute;
             });
-            localStorage.setItem('cals', totalCalories.toFixed(2));
+            cals = totalCalories;
         }
         const timerDisplay = document.getElementById('timerDisplay');
         const timerSound = document.getElementById('timerSound');
@@ -143,6 +144,7 @@
                         document.querySelector('.video-tutorial').classList.add('hidden');
                         document.querySelector('.workout-plan').classList.remove('hidden');
                         document.getElementById('nextexecrsie').classList.add('hidden');
+                        localStorage.setItem('cals', cals.toFixed(2));
                         return;
                     }, 1000);
                 }

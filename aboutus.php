@@ -12,7 +12,8 @@
    
 </head>
 <body>
-<div class="about-content">
+<?php include_once 'navigationbar.php'?>
+<div style="margin-top:70px" class="about-content">
     <div class="main">
         <div class="container">
             <div class="text-section">

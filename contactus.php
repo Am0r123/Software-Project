@@ -13,8 +13,9 @@
     <!-- Bootstrap 5 CSS -->
    </head>
 <body>
+<?php include_once 'navigationbar.php'?>
   
-<div class="landing_page">
+<div style="margin-top:10px;" class="landing_page">
     <div class="responsive-container-block big-container">
       <img class="bg-img" id="iq5bf" src="./img/photo-1534438327276-14e5300c3a48.avif">
       <div class="responsive-container-block container">
