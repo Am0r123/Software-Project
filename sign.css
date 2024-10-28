@@ -4,6 +4,11 @@ body{
 	background:#c8c8c8;
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
+.backimg{
+    position: absolute;
+	width:100%;
+	z-index:-10;
+}
 
 *{box-sizing:border-box}
 
