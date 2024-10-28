@@ -12,6 +12,7 @@
 }
 
 body {
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/014/378/559/small/dark-black-and-gray-blurred-gradient-background-has-a-little-abstract-light-soft-background-for-wallpaper-design-graphic-and-presentation-backdrop-wall-free-photo.jpg");
     background-color: #f9f4ef;
     color: #fff;
 }
