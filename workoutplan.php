@@ -3,265 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
-        .backgroundimage{
-            position:absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:auto;
-            z-index:-10;
-        }
-        .container {
-            background-color: white;
-            margin: 100px auto;
-            padding: 20px 50px;
-            width: 450px;
-            height: 500px;
-            border-radius: 10px;
-            max-width: 400px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        h2 {
-            color: #000;
-            text-align: center;
-        }
-
-        .form-group {
-            margin: 40px 0px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            width: 100px;
-            padding: 10px;
-            background-color: #ff0000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button.back {
-            position: absolute;
-            top: 470px;
-            background-color: #555;
-        }
-
-        button.next, button.submit {
-            position: absolute;
-            top: 470px;
-            right: 40px;
-        }
-
-        button + button {
-            margin-left: 10px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .step {
-            display: none;
-        }
-
-        .step.active {
-            display: block;
-        }
-
-        .progress-bar-container {
-            position:absolute;
-            top:0;
-            left:0;
-            width: 100%;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .progress-bar {
-            height: 10px;
-            background-color: #ff0000;
-            width: 0%;
-        }
-        input[type="file"] {
-            display: none;
-        }
-        .custom-file-upload {
-            display: block;
-            padding: 40px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
-            background-color: #f0f8ff;
-            color: #007bff;
-            cursor: pointer;
-            text-align: center;
-        }
-        .file-name {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #333;
-        }
-        h3{
-            margin-top: 30px;
-        }
-        .buttons,.buttons2{
-            background-color: #ff6666;
-            color: white;
-        }
-        .selected{
-            background-color: #ff0000;
-            color: white;
-        }
-        .text{
-            color:white;
-        }
-        .plans{
-            background-color: white;
-            margin: 100px auto;
-            padding: 20px 50px;
-            width: 450px;
-            height: 500px;
-            border-radius: 10px;
-            max-width: 400px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        .timer{
-            position:absolute;
-            top:10px;
-            left:230px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .completed {
-            text-decoration: line-through;
-            color: green;
-        }
-
-        .completed:after {
-            content: ' ✔';
-            color: green;
-        }
-        #startWorkoutButton,.nextexecrsie{
-            position:absolute;
-            bottom:10px;
-            right:10px;
-        }
-        .nextexecrsie:disabled{
-            background-color:  rgb(255, 152, 152);
-        }
-    </style>
+    <link rel="stylesheet" href="workout.css">
     <title>Fitness Tracker</title>
 </head>
 <body>
     <img class="backgroundimage" src="gym.jpg">
-    <div id="container" class="container">
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <h2>Nutrition and Workout Plan</h2>
-        <form id="fitness-form">
-            <div class="step active">
-                <h3>Information About You</h3>
-                <div class="form-group">
-                    <label for="age">Age:</label>
-                    <input type="number" id="age" name="age" required>
-                </div>
-                <div class="form-group">
-                    <label for="weight">Weight:</label>
-                    <input type="number" id="weight" name="weight" required>
-                </div>
-                <div class="form-group">
-                    <label for="height">Height:</label>
-                    <input type="number" id="height" name="height" required>
-                </div>
-                <button type="button" class="btn next">Next</button>
-            </div>
-            <div class="step">
-                <h3>Inbody if available</h3>
-                <div class="form-group">
-                    <label for="inbody" class="custom-file-upload">
-                        Select Inbody (optional)
-                        <div id="file-name" class="file-name">No file selected</div>
-                    </label>
-                    <input type="file" id="inbody" name="inbody" accept=".jpg, .jpeg, .png, .pdf" onchange="displayFileName()">
-                </div>  
-                <button type="button" class="btn back">Back</button>
-                <button type="button" class="btn next">Next</button>
-            </div>
-            <div class="step">
-                <h3>Select Your Availability</h3>
-                <div class="form-group">
-                    <label>
-                        <input type="button" class="buttons" name="availability" value="morning"  onclick="selectAvailability(this)">
-                        </label><br>
-                    <label>
-                        <input type="button" class="buttons" name="availability" value="afternoon" onclick="selectAvailability(this)">
-                    </label><br>
-                    <label>
-                        <input type="button" class="buttons" name="availability" value="evening" onclick="selectAvailability(this)">
-                    </label><br>
-                    <label>
-                        <input type="button" class="buttons" name="availability" value="night" onclick="selectAvailability(this)">
-                    </label><br>
-                    <label>
-                        <input type="button" class="buttons" name="availability" value="flexible" onclick="selectAvailability(this)">
-                    </label>
-                </div>
-                <button type="button" class="btn back">Back</button>
-                <button type="button" class="btn next">Next</button>
-            </div>
-            <div class="step">
-                <h3>What is your Goal?</h3>
-                <div class="form-group">
-                    <label>
-                        <input type="button" class="buttons2" name="Goal" value="morning"  onclick="selectGoal(this)">
-                        </label><br>
-                    <label>
-                        <input type="button" class="buttons2" name="Goal" value="afternoon" onclick="selectGoal(this)">
-                    </label><br>
-                    <label>
-                        <input type="button" class="buttons2" name="Goal" value="evening" onclick="selectGoal(this)">
-                    </label><br>
-                    <label>
-                        <input type="button" class="buttons2" name="Goal" value="night" onclick="selectGoal(this)">
-                    </label><br>
-                    <label>
-                        <input type="button" class="buttons2" name="Goal" value="flexible" onclick="selectGoal(this)">
-                    </label>
-                </div>
-                <button type="button" class="btn back">Back</button>
-                <button type="submit" class="btn submit">Submit</button>
-            </div>
-        </form>
-    </div>
-    <div id="tracker" class="hidden">
-    <!-- <div id="tracker"> -->
-        <h2 class="text" style="color:red">Your Fitness Tracker</h2>
+    <div id="tracker">
         <div class="plans">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <button id="backButton" onclick="back()" class="arrowbackk" aria-label="Go Back">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        <h2 class="text" style="color:red">Your Fitness Tracker</h2>
         <div class="workout-plan" id="dailyWorkoutPlan"></div>
         <button id="startWorkoutButton">Start Workout</button>
         <div class="timer hidden" id="timerDisplay">00:00</div>
@@ -274,7 +27,7 @@
                 Your browser does not support the video tag.
             </video> -->
         </div>
-        <div id="message"></div>
+        <button class="hidden">Done</button>
         <button id="nextexecrsie" class="nextexecrsie hidden">Next</button>
         </div>
     </div>
@@ -286,36 +39,36 @@
         let selectedGoal = '';
         const workoutPlans = {
             Monday: [
-                { exercise: "Squats", duration: 30 },
-                { exercise: "Push-ups", duration: 30 },
-                { exercise: "Bent-over rows (using dumbbells)", duration: 30 }, 
-                { exercise: "Plank", duration: 30 } 
+                { exercise: "Squats", duration: 1, caloriesPerMinute: 8 },
+                { exercise: "Push-ups", duration: 1, caloriesPerMinute: 7 },
+                { exercise: "Bent-over rows (using dumbbells)", duration: 1, caloriesPerMinute: 6 },
+                { exercise: "Plank", duration: 1, caloriesPerMinute: 5 }
             ],
             Tuesday: [
-                { exercise: "Brisk walking or jogging", duration: 30 * 60 },  
-                { exercise: "Jump rope", duration: 10 * 60 }  
+                { exercise: "Brisk walking or jogging", duration: 30 * 60, caloriesPerMinute: 5 },
+                { exercise: "Jump rope", duration: 10 * 60, caloriesPerMinute: 12 }
             ],
             Wednesday: [
-                { exercise: "Yoga or stretching", duration: 20 * 60 } 
+                { exercise: "Yoga or stretching", duration: 20 * 60, caloriesPerMinute: 3 }
             ],
             Thursday: [
-                { exercise: "Jumping jacks", duration: 60 }, 
-                { exercise: "Lunges", duration: 30 }, 
-                { exercise: "Dumbbell shoulder press", duration: 30 }, 
-                { exercise: "Mountain climbers", duration: 60 }
+                { exercise: "Jumping jacks", duration: 60, caloriesPerMinute: 10 },
+                { exercise: "Lunges", duration: 30, caloriesPerMinute: 8 },
+                { exercise: "Dumbbell shoulder press", duration: 30, caloriesPerMinute: 7 },
+                { exercise: "Mountain climbers", duration: 60, caloriesPerMinute: 11 }
             ],
             Friday: [
-                { exercise: "Cycling or elliptical", duration: 30 * 60 },  
-                { exercise: "High knees or butt kicks", duration: 10 * 60 }  
+                { exercise: "Cycling or elliptical", duration: 30 * 60, caloriesPerMinute: 8 },
+                { exercise: "High knees or butt kicks", duration: 10 * 60, caloriesPerMinute: 10 }
             ],
             Saturday: [
-                { exercise: "Walking, swimming, or sport", duration: 30 * 60 }  
+                { exercise: "Walking, swimming, or sport", duration: 30 * 60, caloriesPerMinute: 6 }
             ],
             Sunday: [
-                { exercise: "Jumping jacks", duration: 6 }, 
-                { exercise: "Lunges", duration: 3 }, 
-                { exercise: "Dumbbell shoulder press", duration: 3 }, 
-                { exercise: "Mountain climbers", duration: 6 }
+                { exercise: "Jumping jacks", duration: 6, caloriesPerMinute: 10 },
+                { exercise: "Lunges", duration: 3, caloriesPerMinute: 8 },
+                { exercise: "Dumbbell shoulder press", duration: 3, caloriesPerMinute: 7 },
+                { exercise: "Mountain climbers", duration: 6, caloriesPerMinute: 11 }
             ]
         };
         const currentDay = new Date().toLocaleString('en-us', { weekday: 'long' });
@@ -328,87 +81,30 @@
             });
             workoutHTML += `</ul>`;
             document.getElementById('dailyWorkoutPlan').innerHTML = workoutHTML;
+
+            checkWorkoutCompletion();
+            calculateTotalCalories(exercises);
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const steps = document.querySelectorAll('.step');
-            const nextButtons = document.querySelectorAll('.next');
-            const backButtons = document.querySelectorAll('.back');
-            const progressBar = document.getElementById('progress-bar');
-            let currentStep = 0;
-
-            nextButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentStep < steps.length - 1) {
-                        steps[currentStep].classList.remove('active');
-                        currentStep++;
-                        steps[currentStep].classList.add('active');
-                        updateProgressBar();
-                    }
+        function checkWorkoutCompletion() {
+            const today = new Date().toISOString().split('T')[0];
+            const completedDate = localStorage.getItem('completedDate');
+            
+            if (completedDate === today) {
+                const exercises = workoutPlans[currentDay];
+                exercises.forEach((_, index) => {
+                    document.getElementById(`exercise-${index}`).classList.add('completed');
                 });
-            });
-
-            backButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    if (currentStep > 0) {
-                        steps[currentStep].classList.remove('active');
-                        currentStep--;
-                        steps[currentStep].classList.add('active');
-                        updateProgressBar();
-                    }
-                });
-            });
-
-            document.getElementById('fitness-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                document.getElementById('container').style.display = 'none';
-                document.getElementById('tracker').classList.remove('hidden');
-
-                
-                const form = document.getElementById('fitness-form');
-
-                const age = form.age.value;
-                const weight = form.weight.value;
-                const height = form.height.value;
-                const inbodyFile = form.inbody.files.length > 0 ? form.inbody.files[0].name : 'No file selected';
-
-                console.log('Age:', age);
-                console.log('Weight:', weight);
-                console.log('Height:', height);
-                console.log('Inbody File:', inbodyFile);
-                console.log('Availability:', selectedAvailability);
-                console.log('Goal:', selectedGoal);
-                document.getElementById('goal').innerHTML = selectedGoal;
-
-                console.log(document.getElementById('fitness-form'));
-            });
-
-            function updateProgressBar() {
-                const progress = (currentStep / (steps.length - 1)) * 100;
-                progressBar.style.width = `${progress}%`;
+                document.querySelector('#startWorkoutButton').classList.add('hidden');
             }
-        });
-        function displayFileName() {
-            const fileInput = document.getElementById('inbody');
-            const fileNameDisplay = document.getElementById('file-name');
-            const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file selected';
-            fileNameDisplay.textContent = fileName;
         }
-        function selectAvailability(selectedButton) {
-            const buttons = document.querySelectorAll('.buttons');
-            buttons.forEach(button => button.classList.remove('selected'));
-            selectedButton.classList.add('selected');
-            selectedAvailability = selectedButton.value;
+        function calculateTotalCalories(exercises) {
+            let totalCalories = 0;
+            exercises.forEach(exercise => {
+                const durationInMinutes = exercise.duration / 60;
+                totalCalories += durationInMinutes * exercise.caloriesPerMinute;
+            });
+            localStorage.setItem('cals', totalCalories.toFixed(2));
         }
-        function selectGoal(selectedButton) {
-            const buttons = document.querySelectorAll('.buttons2');
-            buttons.forEach(button => button.classList.remove('selected'));
-            selectedButton.classList.add('selected');
-            selectedGoal = selectedButton.value;
-        }
-
-
-
         const timerDisplay = document.getElementById('timerDisplay');
         const timerSound = document.getElementById('timerSound');
         const currentExerciseDisplay = document.getElementById('currentExercise');
@@ -438,6 +134,8 @@
             function startNextExercise() {
                 document.getElementById('nextexecrsie').disabled = true;
                 if (currentExerciseIndex >= exercises.length) {
+                    const today = new Date().toISOString().split('T')[0];
+                    localStorage.setItem('completedDate', today);
                     setTimeout(() => {
                         document.getElementById('timerDisplay').classList.add('hidden');
                         document.getElementById('currentExercise').classList.add('hidden');
@@ -496,6 +194,9 @@
             const minutesLeft = Math.floor(seconds / 60);
             const secondsLeft = seconds % 60;
             return `${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}`;
+        }
+        function back(){
+            window.history.back();
         }
     </script>
 </body>
