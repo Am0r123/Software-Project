@@ -1,6 +1,9 @@
 body {
+    background-image: url('software extra/kettlebell-fitness-still-life.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
@@ -61,7 +64,7 @@ input:focus {
     width: 100%;
     padding: 15px;
     font-size: 20px;
-    background-color: #b22222; /* Darker red */
+    background-color: #b22222; 
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -69,7 +72,7 @@ input:focus {
     transition: background-color 0.3s ease;
 }
 .submit-btn:hover {
-    background-color: #9e0000; /* Dark red on hover */
+    background-color: #9e0000; 
 }
 .flex-pay {
     display: flex;
