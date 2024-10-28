@@ -7,14 +7,13 @@ function validatelogin() {
     let x = usernames.indexOf(name); 
     if (x != -1 && passwords[x] == password) 
     {
-        alert("Login successfully! Welcome " + name + "!");
-        window.location.href = "index2.html";
+        window.location.href = "home.php";
         return false;
     }
     if(name=="admin1"&&password=="admin123")
     {
         alert("Login successfully As Admin! Welcome " + name + "!");
-        window.location.href = "admin1.html";
+        window.location.href = "admin1.php";
         return false;
     } 
     else {
