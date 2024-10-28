@@ -124,7 +124,8 @@ button:hover {
 </style>
 </head>
 <body>
-  <div class="container">
+<?php include_once 'navigationbar.php'?>
+  <div style="margin-top:100px" class="container">
     <div class="main-content">
       <div class="card friends">
         <h2>Friends</h2>
@@ -133,7 +134,7 @@ button:hover {
           <p class="name">You</p>
           <p class="steps">41,406</p>
           <h3 style="margin-top:10px">Caliores burnt</h3>
-          <p class="steps" id="cals">1000</p>
+          <p class="steps" id="cals">0</p>
         </div>
         <button class="connect-fb" onclick="startworkout()">Start Workout</button>
       </div>
