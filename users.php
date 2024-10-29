@@ -42,7 +42,7 @@ $result = $conn->query($sql);
                     </div>
                     <div class="user-actions">
                         <a href="delete-user.php?id=<?= $user['user_id'] ?>"><i class="fas fa-trash-alt"></i></a>
-                        <a href="edit-user.php?id=<?= $user['user_id'] ?>"><i class="fas fa-edit"></i></a>
+                        <a href="edit.php?id=<?= $user['user_id'] ?>"><i class="fas fa-edit"></i></a>
                     </div>
                 </div>
             <?php endwhile; ?>

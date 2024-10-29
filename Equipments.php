@@ -8,19 +8,8 @@
     <link rel="stylesheet" href="./css/Equipments.css">
 </head>
 <body>
-    <main>
-    <div class="header">
-        <h1>Gym Equipment</h1>
-        <nav>
-            <ul>
-                <li><a href="#cardio">Cardio</a></li>
-                <li><a href="#strength">Strength Training</a></li>
-                <li><a href="#accessories">Accessories</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    
+    <?php include_once 'navigationbar.php'; ?>
+    <main style="margin-top:50px;">
         <section id="cardio">
             <h2>Cardio Machines</h2>
             <div class="equipment">
